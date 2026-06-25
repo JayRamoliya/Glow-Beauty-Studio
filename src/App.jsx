@@ -1,8 +1,27 @@
 import { useState } from "react";
 
+import {
+  FaInstagram,
+  FaWhatsapp,
+  FaPhoneAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
+
+import {
+  FaCut,
+  FaPaintBrush,
+  FaSpa,
+  FaMagic,
+  FaEye,
+  FaHandSparkles,
+  FaBroom,
+  FaGem,
+} from "react-icons/fa";
+
 const services = {
   hair: {
     title: "હેરસ્ટાઇલ",
+    icon: FaCut,
     items: [
       "ઓપન કલ્સ",
       "સ્ટ્રેટ હેર લૂક",
@@ -11,8 +30,10 @@ const services = {
       "હાલ્ફ પોની ટેલ",
     ],
   },
+
   makeup: {
     title: "મેકઅપ",
+    icon: FaPaintBrush,
     items: [
       "HD મેકઅપ",
       "3D મેકઅપ",
@@ -22,8 +43,10 @@ const services = {
       "નેચરલ મેકઅપ",
     ],
   },
+
   shainer: {
     title: "શાઈનર",
+    icon: FaMagic,
     items: [
       "કોરિયન ગ્લાસ",
       "હાયડ્રા ગ્લેમ",
@@ -32,8 +55,10 @@ const services = {
       "વેલા",
     ],
   },
+
   facial: {
     title: "ફેશિયલ",
+    icon: FaSpa,
     items: [
       "લોટસ (પ્રોફેશનલ)",
       "O3+ ફેશિયલ",
@@ -42,12 +67,21 @@ const services = {
       "રાગા",
     ],
   },
+
   threading: {
     title: "થ્રેડિંગ",
-    items: ["આઇબ્રો", "અપર લિપ", "ફોરહેડ", "ફૂલ ફેસ"],
+    icon: FaEye,
+    items: [
+      "આઇબ્રો",
+      "અપર લિપ",
+      "ફોરહેડ",
+      "ફૂલ ફેસ",
+    ],
   },
+
   wax: {
     title: "વેક્સ",
+    icon: FaHandSparkles,
     items: [
       "જેલ વેક્સ",
       "ક્રિમ વેક્સ",
@@ -57,12 +91,16 @@ const services = {
       "બ્રાજીલિયન વેક્સ",
     ],
   },
+
   cleanup: {
     title: "ક્લીનઅપ",
+    icon: FaBroom,
     items: ["ક્લીનઅપ"],
   },
+
   jewellery: {
     title: "જ્વેલરી ભાડે",
+    icon: FaGem,
     items: [
       "બ્રાઇડલ જ્વેલરી",
       "એન્ગેજમેન્ટ બ્રાઇડલ",
@@ -129,12 +167,14 @@ export default function App() {
 
       {/* Header */}
       <header className="bg-gradient-to-r from-pink-500 to-pink-300 text-white text-center py-8 px-4">
-        <h1 className="text-3xl md:text-5xl font-bold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold flex items-center justify-center gap-3">
+          <FaSpa className="text-pink-100" />
           Glow Beauty Studio
+          <FaGem className="text-pink-100" />
         </h1>
 
         <p className="mt-3 text-sm md:text-lg">
-          ✨ Where Beauty Meets Elegance ✨
+          Where Beauty Meets Elegance 
         </p>
       </header>
 
@@ -166,15 +206,24 @@ export default function App() {
         </h2>
 
         <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {Object.entries(services).map(([key, service]) => (
-            <button
-              key={key}
-              onClick={() => setServiceModal(service)}
-              className="bg-pink-50 border border-pink-200 rounded-2xl p-5 hover:bg-pink-100 hover:scale-105 transition"
-            >
-              {service.title}
-            </button>
-          ))}
+          {Object.entries(services).map(([key, service]) => {
+            const Icon = service.icon;
+
+            return (
+              <button
+                key={key}
+                onClick={() => setServiceModal(service)}
+                className="bg-pink-50 border border-pink-200 rounded-2xl p-6 hover:bg-pink-100 transition"
+              >
+                <Icon
+                  size={32}
+                  className="mx-auto mb-3 text-pink-500"
+                />
+
+                <h3>{service.title}</h3>
+              </button>
+            );
+          })}
         </div>
       </section>
 
@@ -201,7 +250,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contact */}
       <section
         id="contact"
         className="bg-pink-100 py-14 px-4 text-center"
@@ -210,34 +258,40 @@ export default function App() {
           અમારો સંપર્ક કરો
         </h2>
 
-        <p>
-          રાજકોટ-360004
-        </p>
+        <div className="space-y-4 text-gray-700">
+          <p className="flex items-center justify-center gap-2">
+            <FaMapMarkerAlt className="text-pink-600" />
+            રાજકોટ-360004
+          </p>
 
-        <p className="mt-3">
-          📞 75758 46523
-        </p>
+          <p className="flex items-center justify-center gap-2">
+            <FaPhoneAlt className="text-green-600" />
+            75758 46523
+          </p>
+        </div>
       </section>
 
-      {/* Floating Buttons */}
-      <div className="fixed bottom-4 right-4 flex flex-col gap-3 z-40">
+
+      <div className="fixed bottom-5 right-5 flex flex-col gap-3 z-50">
+
         <a
           href="https://www.instagram.com/ramoliyajay_com/"
           target="_blank"
           rel="noreferrer"
-          className="bg-pink-600 text-white px-4 py-3 rounded-full shadow-lg"
+          className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition"
         >
-          Instagram
+          <FaInstagram size={24} />
         </a>
 
         <a
           href="https://wa.me/916353716421"
           target="_blank"
           rel="noreferrer"
-          className="bg-green-500 text-white px-4 py-3 rounded-full shadow-lg"
+          className="bg-green-500 text-white p-4 rounded-full shadow-lg hover:scale-110 transition"
         >
-          WhatsApp
+          <FaWhatsapp size={24} />
         </a>
+
       </div>
 
       {/* Footer */}
