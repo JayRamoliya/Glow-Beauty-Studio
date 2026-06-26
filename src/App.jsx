@@ -266,7 +266,7 @@ export default function App() {
 
           <p className="flex items-center justify-center gap-2">
             <FaPhoneAlt className="text-green-600" />
-            75758 46523
+            63537 16421
           </p>
         </div>
       </section>
